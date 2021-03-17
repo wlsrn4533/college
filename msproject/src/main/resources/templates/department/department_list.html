@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${session.lang}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorator="layout/layout">
+<head>
+<title>Home</title>
+</head>
+<body layout:fragment="content">
+	<form name="formname" method="POST" action="professorlist">
+		<div class="ui icon message" id="successmessage" style="display: none">
+			<i class="notched circle loading icon"></i>
+			<div class="content">
+				<div class="header" id="resultmessage"></div>
+			</div>
+		</div>
+
+		<div class="fluid fifteen wide column ">
+			<table id="departmentexample" class="display nowrap" style="width: 100%">
+				<thead>
+					<tr>
+						<td>Department_No</td>
+						<td>Department_Name</td>
+						<td>Category</td>
+						<td>Open_Yn</td>
+						<td>Capacity</td>
+						<td>Option</td>
+					</tr>
+				</thead>
+				<tr th:each="item : ${departments}">
+                        <td th:text="${item.department_no}"></td>
+                        <td th:text="${item.department_name}"></td>
+                        <td th:text="${item.category}"></td>
+                        <td><input type="text" size="1" maxlength="1"
+                            th:value="${item.open_yn}"></td>
+                        <td th:text="${item.capacity}"></td>
+                        <td><i class="edit outline icon primary" id="editbtn"
+                            style="cursor: pointer"></i> <i
+                            class="trash alternate outline icon red" id="deletebtn"
+                            style="cursor: pointer"></i></td>
+                    </tr>
+			</table>
+		</div>
+
+		<div class="ui modal delete">
+			<i class="close icon"></i>
+			<div class="header">회원삭제</div>
+
+			<button type="button" id="deleteok">삭제</button>
+			<button type="button" id="deletecancel">취소</button>
+		</div>
+
+
+
+	</form>
+</body>
+
+</html>

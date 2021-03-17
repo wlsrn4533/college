@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naver.minsee1234.dao.MemberDao">
+
+	<insert id="insertRow">
+		insert into member (email, name, password, phone1,phone2,phone3, photo)
+		values(#{email},#{name},#{password},#{phone1},#{phone2},#{phone3},#{photo})
+	</insert>
+	
+	<select id="selectOne" resultType="com.naver.minsee1234.entities.Member">
+		select * from member where email=#{email}
+	</select>
+
+
+
+</mapper>

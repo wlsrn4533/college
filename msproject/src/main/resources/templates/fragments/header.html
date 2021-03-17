@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body th:fragment="header">
+	<div class="ui text container" style="padding: 0 155px;">
+		<div class=" item">
+			<a href="index">Home</a>
+
+		</div>
+		<div class=" item">
+			<a href="professor_login">Login</a>
+		</div>
+		<div class=" item">
+			<a href="departmentList">교과목</a>
+		</div>
+		<div class="ui simple dropdown item">
+			교수 <i class="dropdown icon"></i>
+			<div class="menu">
+				<div class="item">
+					<a href="professorjoin">교수등록</a>
+				</div>
+				<div class="item">
+					<a href="professorlist">교수리스트</a>
+				</div>
+				<div class="item">
+					<a th:href="@{tbclassprojoin(professor_no=${session.sessionProfessor_no})}">교수수업등록</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+<input type="hidden" name="professor_no">
+	<div th:unless="${session.sessionProfessor_no==null}">
+		<div class="ui simple dropdown item">
+			<span th:text="${session.sessionProfessor_name}"></span><span>
+				교수님 반가워요!</span><br> <i class="dropdown icon"></i>
+			<div class="menu">
+				<a class="item" th:href="@{professorUpdate(professor_no=${session.sessionProfessor_no})}">정보수정</a> 
+				<a class="item"
+					th:href="@{classProfessorlist(professor_no=${session.sessionProfessor_no})}">수업조회</a> 
+				<a class="item"
+					th:href="tbclassupdateRow">수업수정</a> 					
+				<a class="item" href="logout">Logout</a>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

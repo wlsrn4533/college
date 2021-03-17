@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout">
+<head>
+<title>login</title>
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/member.css}">
+</th:block>
+<th:block layout:fragment="script"></th:block>
+</head>
+<body layout:fragment="content">
+	<div class="ui middle aligned center aligned grid">
+		<div class="column">
+			<h2 class="ui header">
+				<strong>login</strong>
+			</h2>
+			<form class="ui large from" action="professor_loginUp" Method="post">
+				<div class="ui stacked segment">
+					<div class="field">
+						<div class="fluid ui left icon input">
+							<input type="text" placeholder="교수번호를누르세요" name="professor_no"> <i
+								class="mail icon"></i>
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="fluid ui left icon input">
+							<input type="password" placeholder="비밀번호를입력해주세요" name="professor_pw"> <i
+								class="lock icon"></i>
+						</div>
+					</div>
+					<div class="field" style="margin-top: 20px">
+						<span><button type="submit" class=" fluid ui primary basic button">login</button></span> 
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${session.lang}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorator="layout/layout">
+<head>
+<title>Home</title>
+</head>
+<body layout:fragment="content">
+	<form name="formname" method="POST" action="professorlist">
+		<div class="ui icon message" id="successmessage" style="display: none">
+			<i class="notched circle loading icon"></i>
+			<div class="content">
+				<div class="header" id="resultmessage"></div>
+			</div>
+		</div>
+
+		<div class="fluid fifteen wide column ">
+			<table id="professorexample" class="display nowrap" style="width: 100%">
+				<thead>
+					<tr>
+						<td>Student_No</td>
+						<td>Department_No</td>
+						<td>Student_Name</td>
+						<td>Student_Ssn</td>
+						<td>Student_Address</td>
+						<td>Entrance_Date</td>
+						<td>Absence_Yn</td>
+						<td>Coach_Professor_No</td>
+						<td>Option</td>
+					</tr>
+				</thead>
+				<tr th:each="item : ${students}">
+                        <td th:text="${item.student_no}"></td>
+                        <td th:text="${item.department_no}"></td>
+                        <td th:text="${item.student_name}"></td>
+                         <td th:text="${item.student_ssn}"></td>
+                        <td th:text="${item.student_address}"></td>
+                        <td th:text="${item.entrance_date}"></td>
+                        <td th:text="${item.absence_yn}"></td>
+                        <td th:text="${item.coach_professor_no}"></td>
+                        
+                        <td><i class="edit outline icon primary" id="editbtn"
+                            style="cursor: pointer"></i> <i
+                            class="trash alternate outline icon red" id="deletebtn"
+                            style="cursor: pointer"></i></td>
+                    </tr>
+			</table>
+		</div>
+
+		<div class="ui modal delete">
+			<i class="close icon"></i>
+			<div class="header">회원삭제</div>
+
+			<button type="button" id="deleteok">삭제</button>
+			<button type="button" id="deletecancel">취소</button>
+		</div>
+
+
+
+	</form>
+</body>
+
+</html>

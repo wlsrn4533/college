@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/layout">
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/class.css}">
+</th:block>
+<th:block layout:fragment="script">
+	<script type="text/javascript" th:src="@{/js/class.js}"></script>
+</th:block>
+<body layout:fragment="content">
+	<div class="ui middle aligned center aligned grid">
+		<div class="column" style="height: 600px !important;">
+			<div class="row">
+				<div class="eight wide column">
+					<form class="ui large from" action="classInsertSave" Method="post">
+						<div class="ui stacked segment">
+							<div class="field">
+								<div class="ui labeled input">
+									<div class="ui label">이수구분</div>
+									<input type="text"> <input type="text"
+										style="margin-right: 20px;">
+									<div class="ui label">학과번호</div>
+									<input type="text" name="department_no" id="department_no">
+									<button class="ui grey basic button" type="button"
+										id="departmentSeachInsert">학과검색</button>
+								</div>
+							</div>
+							<div class="field">
+								<div class="ui labeled input">
+									<div class="ui label">학점</div>
+									<input type="text" style="margin-right: 20px;">
+									<div class="ui label">담당교수</div>
+									<input type="text" name="department_no" id="department_no">
+									<button class="ui grey basic button" type="button"
+										id="departmentSeachInsert">학과검색</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="eight wide column"></div>
+			</div>
+			<!-- 학과,수업검색 모달 -->
+			<div class="ui search tiny modal">
+				<div class="header">학과검색</div>
+				<div class="scrolling content">
+					<div class="ui labeled input fluid" style="margin-bottom: 10px;">
+						<div class="ui label">선택</div>
+						<input type="text" id="departmentModalInput" placeholder="학과번호">
+					</div>
+					<div>
+						<table id="departmentexample" class="display nowrap"
+							style="text-align: center;">
+							<thead>
+								<tr>
+									<th><h3>학과번호</h3></th>
+									<th><h3>학과이름</h3></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="department : ${departments}"
+									style="cursor: pointer;">
+									<td th:text="${department.department_no}"
+										th:value="${department.department_no}" id="departmentSelect"></td>
+									<td th:text="${department.department_name}"
+										id="departmentSelect"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="actions">
+					<button style="width: 40%;" class="ui primary cancel button">확인</button>
+					<button style="width: 40%; margin-right: 40px"
+						id="departmentSearchCancelBtn" class="ui cancel button">취소</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
